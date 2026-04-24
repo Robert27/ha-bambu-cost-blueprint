@@ -430,14 +430,14 @@ action:
                   sequence:
                     - service: telegram_bot.send_photo
                       data:
-                        target: "{{ _chat_id }}"
+                        chat_id: "{{ _chat_id }}"
                         url: "{{ _ha_url }}{{ cover_image_url }}"
                         caption: "{{ msg_body }}"
                         parse_mode: markdownv2
               default:
                 - service: telegram_bot.send_message
                   data:
-                    target: "{{ _chat_id }}"
+                    chat_id: "{{ _chat_id }}"
                     message: "{{ msg_body }}"
                     parse_mode: markdownv2
             - service: system_log.write
@@ -466,6 +466,6 @@ action:
           sequence:
             - service: telegram_bot.send_message
               data:
-                target: "{{ repeat.item }}"
+                chat_id: "{{ repeat.item }}"
                 message: "⏸️ 3D Printer has paused the print job."
                 parse_mode: markdownv2
